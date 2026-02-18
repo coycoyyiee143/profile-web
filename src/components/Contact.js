@@ -1,15 +1,15 @@
 import React, { useState } from "react";
+import { Container, Row, Col, Form, Button, Card, Alert } from "react-bootstrap";
 
 function SubmissionSuccess({ formData }) {
   return (
-    <div className="alert alert-success">
-      <h4>Thank you, {formData.name}!</h4>
+    <Alert variant="success">
+      <Alert.Heading>Thank you, {formData.name}!</Alert.Heading>
       <p>Your message has been sent successfully.</p>
-
       <hr />
       <p><strong>Email:</strong> {formData.email}</p>
       <p><strong>Message:</strong> {formData.message}</p>
-    </div>
+    </Alert>
   );
 }
 
@@ -33,57 +33,69 @@ function Contact() {
   };
 
   if (submitted) {
-    return <SubmissionSuccess formData={formData} />;
+    return (
+      <Container className="py-5">
+        <Row className="justify-content-center">
+          <Col md={6}>
+            <SubmissionSuccess formData={formData} />
+          </Col>
+        </Row>
+      </Container>
+    );
   }
 
   return (
-    <div className="row justify-content-center">
-      <div className="col-md-6">
-        <h1 className="mb-4">Contact Me</h1>
+    <Container className="py-5">
+      <Row className="justify-content-center">
+        <Col md={6}>
+          <h1 className="mb-4 text-center">Contact Me</h1>
+          <Card className="p-4 shadow">
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3" controlId="formName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Enter your name"
+                  required
+                />
+              </Form.Group>
 
-        <form onSubmit={handleSubmit} className="card p-4 shadow">
-          <div className="mb-3">
-            <label className="form-label">Name</label>
-            <input
-              type="text"
-              name="name"
-              className="form-control"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
+              <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter your email"
+                  required
+                />
+              </Form.Group>
 
-          <div className="mb-3">
-            <label className="form-label">Email</label>
-            <input
-              type="email"
-              name="email"
-              className="form-control"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
+              <Form.Group className="mb-3" controlId="formMessage">
+                <Form.Label>Message</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  name="message"
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Write your message"
+                  required
+                />
+              </Form.Group>
 
-          <div className="mb-3">
-            <label className="form-label">Message</label>
-            <textarea
-              name="message"
-              className="form-control"
-              rows="4"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <button type="submit" className="btn btn-primary w-100">
-            Submit
-          </button>
-        </form>
-      </div>
-    </div>
+              <Button type="submit" variant="primary" className="w-100">
+                Submit
+              </Button>
+            </Form>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
