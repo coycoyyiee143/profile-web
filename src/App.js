@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Home from "./component/Home";
-import About from "./component/About";
-import Skills from "./component/Skills";
-import Contact from "./component/Contact";
+import Home from "./components/Home";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Contact from "./components/Contact";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
