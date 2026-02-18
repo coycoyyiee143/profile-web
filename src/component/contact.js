@@ -2,12 +2,11 @@ import React, { useState } from "react";
 
 function SubmissionSuccess({ formData }) {
   return (
-    <div>
-      <h2>Submission Successful!</h2>
-      <p>Thank you, {formData.name}! Your message has been sent.</p>
+    <div className="alert alert-success">
+      <h4>Thank you, {formData.name}!</h4>
+      <p>Your message has been sent successfully.</p>
 
-      <h3>Submitted Information:</h3>
-      <p><strong>Name:</strong> {formData.name}</p>
+      <hr />
       <p><strong>Email:</strong> {formData.email}</p>
       <p><strong>Message:</strong> {formData.message}</p>
     </div>
@@ -25,11 +24,7 @@ function Contact() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
@@ -42,44 +37,52 @@ function Contact() {
   }
 
   return (
-    <div>
-      <h1>Contact Me</h1>
+    <div className="row justify-content-center">
+      <div className="col-md-6">
+        <h1 className="mb-4">Contact Me</h1>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label><br />
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <form onSubmit={handleSubmit} className="card p-4 shadow">
+          <div className="mb-3">
+            <label className="form-label">Name</label>
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div>
-          <label>Email:</label><br />
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div>
-          <label>Message:</label><br />
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="mb-3">
+            <label className="form-label">Message</label>
+            <textarea
+              name="message"
+              className="form-control"
+              rows="4"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <button type="submit">Submit</button>
-      </form>
+          <button type="submit" className="btn btn-primary w-100">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

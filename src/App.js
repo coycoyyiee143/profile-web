@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import "./App.css";
-import Home from "./home";
-import About from "./about";
-import Skills from "./skills";
-import Contact from "./contact";
+import Home from "./component/Home";
+import About from "./component/About";
+import Skills from "./component/Skills";
+import Contact from "./component/Contact";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -22,15 +21,22 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <nav>
-        <button onClick={() => setCurrentPage("home")}>Home</button>
-        <button onClick={() => setCurrentPage("about")}>About</button>
-        <button onClick={() => setCurrentPage("skills")}>Skills</button>
-        <button onClick={() => setCurrentPage("contact")}>Contact</button>
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className="container">
+          <span className="navbar-brand">My Profile</span>
+          <div className="navbar-nav ms-auto">
+            <button className="btn btn-link nav-link text-white" onClick={() => setCurrentPage("home")}>Home</button>
+            <button className="btn btn-link nav-link text-white" onClick={() => setCurrentPage("about")}>About</button>
+            <button className="btn btn-link nav-link text-white" onClick={() => setCurrentPage("skills")}>Skills</button>
+            <button className="btn btn-link nav-link text-white" onClick={() => setCurrentPage("contact")}>Contact</button>
+          </div>
+        </div>
       </nav>
 
-      {renderPage()}
+      <div className="container mt-5">
+        {renderPage()}
+      </div>
     </div>
   );
 }

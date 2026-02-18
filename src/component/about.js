@@ -3,17 +3,16 @@ import React from "react";
 function About() {
   return (
     <div>
-      <h1>About Me</h1>
+      <h1 className="mb-3">About Me</h1>
       <p>
-        I am a passionate web development student with a strong interest in
-        building modern and responsive web applications. I enjoy coding,
-        learning new technologies, and solving challenging problems.
+        I am a web development student with a strong interest in front-end and
+        back-end technologies. I enjoy learning new frameworks and improving
+        my coding skills.
       </p>
 
       <p>
-        My hobbies include reading tech blogs, playing sports, and exploring
-        new programming tools. I am currently improving my skills in React
-        and JavaScript.
+        My hobbies include coding, reading tech blogs, and exploring modern
+        JavaScript frameworks.
       </p>
     </div>
   );
